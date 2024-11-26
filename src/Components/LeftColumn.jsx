@@ -3,17 +3,11 @@ import image1 from '../images/image1.png'
 import image2 from '../images/image2.png'
 import AddRecipe from './AddRecipe'
 
-const LeftColumn = ({ recipes, setRecipes, onSelectRecipe }) => {
+const LeftColumn = ({ recipes, onAddRecipe, onSelectRecipe }) => {
   const [showModal, setShowModal] = useState(false)
 
-  const handleAddRecipe = (newRecipe) => {
-    setRecipes((prevRecipes) => [...prevRecipes, newRecipe])
-
-    setShowModal(false)
-  }
-
   return (
-    <div className="flex flex-col border-r border-gray-300">
+    <div className="flex flex-col border-r border-gray-300 ">
       <div className="flex flex-row ml-3 mr-3 mb-4 justify-between ">
         <h1 className="pt-4 text-lg font-semibold">Recipe's List</h1>
         <img
@@ -27,8 +21,8 @@ const LeftColumn = ({ recipes, setRecipes, onSelectRecipe }) => {
       {recipes.length > 0 ? (
         <div className="pl-2 pt-2 pb-2 mb-[560px]">
           <ul className="list-none p-0">
-            {recipes.map((recipe, index) => (
-              <li key={index} className="mb-4">
+            {recipes.map((recipe) => (
+              <li key={recipe.id} className="mb-4">
                 <div
                   className="flex flex-col"
                   onClick={() => {
@@ -59,7 +53,7 @@ const LeftColumn = ({ recipes, setRecipes, onSelectRecipe }) => {
       {showModal && (
         <AddRecipe
           onClose={() => setShowModal(false)}
-          onAddRecipe={handleAddRecipe}
+          onAddRecipe={onAddRecipe}
         />
       )}
     </div>
