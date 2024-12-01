@@ -11,6 +11,7 @@ const AddRecipe = ({ onClose, onAddRecipe }) => {
   }
 
   const [recipeData, setRecipeData] = useState(initialRecipeData)
+  const [errors, setErrors] = useState({})
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -20,8 +21,35 @@ const AddRecipe = ({ onClose, onAddRecipe }) => {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const closeModal = (e) => {
+    if (modalRef.current === e.target) {
+      onClose()
+    }
+  }
+
+  const validate = () => {
+    const newErrors = {}
+
+    if (!recipeData.recipeName.trim()) {
+      newErrors.recipeName = 'Recipe Name is required'
+    }
+    if (!recipeData.recipeIngredients.trim()) {
+      newErrors.recipeIngredients = 'Recipe Ingredients are required'
+    }
+    if (!recipeData.recipeDescription.trim()) {
+      newErrors.recipeDescription = 'Recipe Description is required'
+    }
+
+    setErrors(newErrors)
+    return Object.keys(newErrors).length === 0
+  }
+
+  const handleSubmitData = (e) => {
     e.preventDefault()
+
+    if (!validate()) {
+      return
+    }
 
     onAddRecipe(recipeData)
 
@@ -30,83 +58,90 @@ const AddRecipe = ({ onClose, onAddRecipe }) => {
     onClose()
   }
 
-  const closeModal = (e) => {
-    if (modalRef.current === e.target) {
-      onClose()
-    }
-  }
-
   return (
     <div
       ref={modalRef}
       onClick={closeModal}
       className="fixed inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
     >
-      <div className="mt-4 flex flex-col gap-5 t=ext-black bg-white ">
-        <div className="flex flex-row justify-between mt-3 ml-4 mr-4 gap-96">
-          <h1 className="text-lg font-semibold">Add Recipe</h1>
+      <div className="mt-4 flex flex-col gap-5 text-black bg-white rounded-md w-full max-w-[90%] sm:max-w-lg  lg:max-w-3xl">
+        <div className="flex flex-row justify-between mt-3 ml-4 mr-4 gap-4">
+          <h1 className="text-lg font-semibold text-gray-800">Add Recipe</h1>
           <img
             onClick={onClose}
-            className="w-6 h-6 cursor-pointer "
+            className="mt-1 w-5 h-5 cursor-pointer"
             src={image3}
           />
         </div>
         <hr className="border border-gray-300" />
-        <div className="flex flex-col ml-4 mr-4">
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col">
-              <label className="text-gray-700">Recipe Name</label>
-              <input
-                name="recipeName"
-                className="border border-gray-300 rounded mt-2"
-                type="text"
-                placeholder="Enter the recipe's name"
-                value={recipeData.recipeName}
+
+        <div className="flex flex-col px-4">
+          <div className="flex flex-col">
+            <label className="text-gray-700">Recipe Name</label>
+            <input
+              name="recipeName"
+              className="border border-gray-300 rounded mt-2 p-2"
+              type="text"
+              placeholder="Enter the recipe's name"
+              value={recipeData.recipeName}
+              onChange={handleChange}
+            />
+            {errors.recipeName && (
+              <span className="text-red-500 text-sm">{errors.recipeName}</span>
+            )}
+          </div>
+
+          <div className="flex flex-col lg:flex-row mt-4 gap-4">
+            <div className="flex flex-col w-full lg:w-1/2">
+              <label className="text-gray-700">Recipe Ingredients</label>
+              <textarea
+                name="recipeIngredients"
+                className="border border-gray-300 rounded mt-2 h-40 p-3 "
+                placeholder="Enter ingredients separated by asterisks, e.g., 1 tablespoon sugar * 2 tablespoons honey"
+                value={recipeData.recipeIngredients}
                 onChange={handleChange}
               />
+              {errors.recipeIngredients && (
+                <span className="text-red-500 text-sm">
+                  {errors.recipeIngredients}
+                </span>
+              )}
             </div>
 
-            <div className="flex flex-row mt-4 gap-4">
-              <div className="flex flex-col">
-                <label className="text-gray-700">Recipe Ingredients</label>
-                <textarea
-                  name="recipeIngredients"
-                  className="border border-gray-300 rounded mt-2 h-52 p-3 w-96"
-                  type="text"
-                  placeholder="Enter each ingredients seperated by asterik. for ex.1 table spoon sugar * 2 table spoon honey"
-                  value={recipeData.recipeIngredients}
-                  onChange={handleChange}
-                />
-              </div>
+            <div className="flex flex-col w-full lg:w-1/2">
+              <label className="text-gray-700">Recipe Description</label>
+              <textarea
+                name="recipeDescription"
+                className="border border-gray-300 rounded mt-2 h-40 p-3 "
+                placeholder="Enter steps separated by asterisks, e.g., 1. Boil water for 5 minutes * 2. Add sugar"
+                value={recipeData.recipeDescription}
+                onChange={handleChange}
+              />
+              {errors.recipeDescription && (
+                <span className="text-red-500 text-sm">
+                  {errors.recipeDescription}
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
 
-              <div className="flex flex-col">
-                <label className="text-gray-700">Recipe Description</label>
-                <textarea
-                  name="recipeDescription"
-                  className="border border-gray-300 rounded mt-2 h-52 p-3 w-96"
-                  type="text"
-                  placeholder="Enter each description seperated by asterik. for ex.1 Boil water for 5 mins. *Add sugar."
-                  value={recipeData.recipeDescription}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <hr className="border border-gray-300" />
-            <div className="flex flex-row justify-end mr-3 mb-3 gap-3">
-              <button
-                onClick={onClose}
-                className="bg-white text-gray-700 p-2 mt-2 border border-gray-400 rounded pl-4 pr-4"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="bg-[#75b6f9] text-white p-2 mt-2 rounded"
-              >
-                Add Recipe
-              </button>
-            </div>
-          </form>
+        <hr className="border border-gray-300" />
+
+        <div className="flex flex-row justify-end px-4 py-3 pt-0 gap-3">
+          <button
+            onClick={onClose}
+            className="bg-white text-gray-700 p-2 border border-gray-400 rounded pl-4 pr-4"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleSubmitData}
+            type="submit"
+            className="bg-[#548cfb] hover:bg-[#4777d8] text-white p-2 pl-3 pr-3 rounded"
+          >
+            Add Recipe
+          </button>
         </div>
       </div>
     </div>

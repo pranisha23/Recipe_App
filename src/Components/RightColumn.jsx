@@ -7,9 +7,9 @@ import EditRecipe from './EditRecipe'
 const RightColumn = ({ selectedRecipe, onDeleteRecipe, onUpdateRecipe }) => {
   if (!selectedRecipe) {
     return (
-      <div className="flex flex-col items-center mt-60 ml-20 ">
-        <img className="w-80" src={image4} />
-        <h1 className="ml-8 mt-4">Select a recipe for details!</h1>
+      <div className="flex flex-col items-center lg:mt-48 lg:mb-0 mt-40 mb-72">
+        <img className="w-80 " src={image4} />
+        <h1 className="ml-7 mt-5 ">Select a recipe for details!</h1>
       </div>
     )
   }
@@ -17,10 +17,12 @@ const RightColumn = ({ selectedRecipe, onDeleteRecipe, onUpdateRecipe }) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
-    <div className="flex flex-col mt-5 ml-20 mr-20">
+    <div className="flex flex-col lg:mt-4 lg:mb-0 mb-80">
       <div className="flex flex-row justify-between items-center mb-4">
-        <h1 className="text-lg font-semibold">{selectedRecipe.recipeName}</h1>
-        <div className="flex gap-6">
+        <h1 className="text-lg font-semibold ml-4">
+          {selectedRecipe.recipeName}
+        </h1>
+        <div className="flex gap-6 mr-4">
           <img
             onClick={() => setShowModal(true)}
             className="w-6 h-6 cursor-pointer"
@@ -43,8 +45,8 @@ const RightColumn = ({ selectedRecipe, onDeleteRecipe, onUpdateRecipe }) => {
       </div>
       <hr className="border border-gray-300 mb-3 w-full" />
 
-      <div className="mb-4">
-        <h2 className="text-base font-semibold">Ingredients</h2>
+      <div className="mb-4 ml-4">
+        <h2 className="text-xl font-semibold pb-2">Ingredients</h2>
         <ul className="list-disc list-inside text-gray-700 text-sm">
           {selectedRecipe.recipeIngredients
             .split('*')
@@ -54,8 +56,8 @@ const RightColumn = ({ selectedRecipe, onDeleteRecipe, onUpdateRecipe }) => {
         </ul>
       </div>
 
-      <div>
-        <h2 className="text-base font-semibold">Description</h2>
+      <div className="ml-4">
+        <h2 className="text-xl font-semibold pb-2">Direction</h2>
         <ul className="list-disc list-inside text-gray-700 text-sm">
           {selectedRecipe.recipeDescription.split('*').map((step, index) => (
             <li key={index}>{step.trim()}</li>

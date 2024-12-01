@@ -46,15 +46,15 @@ const App = () => {
   }
 
   return (
-    <div className="flex flex-row border border-gray-300 ml-24 mr-24 mt-8">
-      <div className=" basis-1/4">
+    <div className="flex flex-col lg:flex-row border border-gray-300 border-t-0 border-b-0 ml-4 mr-4 lg:ml-24 lg:mr-24 mt-10 ">
+      <div className="basis-full lg:basis-1/4 mb-6 lg:mb-0">
         <LeftColumn
           recipes={recipes}
           onAddRecipe={handleAddRecipe}
           onSelectRecipe={setSelectedRecipe}
         />
       </div>
-      <div className="basis-3/4">
+      <div className="basis-full lg:basis-3/4">
         <RightColumn
           selectedRecipe={selectedRecipe}
           onDeleteRecipe={handleDeleteRecipe}

@@ -1,10 +1,16 @@
 {
   "recipes": [
     {
-      "id": "e7a7",
+      "id": "d157",
+      "recipeName": "Chicken Curry",
+      "recipeIngredients": "Chicken *onion *garlic *ginger *tomatoes *coconut milk *curry powder *chili *cilantrooo",
+      "recipeDescription": "Sauté onion, garlic, and ginger. *Add chicken and curry powder. *Stir in tomatoes and coconut milk. Simmer until chicken is cooked through. *Garnish with cilantro and serve."
+    },
+    {
+      "id": "1a08",
       "recipeName": "Milkshake",
-      "recipeIngredients": "z zx ",
-      "recipeDescription": " zxcDC"
+      "recipeIngredients": "nbsjc *jbs *bjaxxxxx",
+      "recipeDescription": "ncbsjcbsdjgyhferuj *jhxjasbcsch"
     }
   ]
 }
