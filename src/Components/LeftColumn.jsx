@@ -29,7 +29,7 @@ const LeftColumn = ({ recipes, onAddRecipe, onSelectRecipe }) => {
                     onSelectRecipe(recipe)
                   }}
                 >
-                  <p className="text-lg text-gray-700 cursor-pointer ml-3 pb-3">
+                  <p className="text-lg text-gray-700 cursor-pointer ml-3 pb-3 ">
                     {recipe.recipeName}
                   </p>
                   <hr className="border border-gray-300 w-full" />

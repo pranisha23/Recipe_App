@@ -1,16 +1,16 @@
 {
   "recipes": [
     {
-      "id": "d157",
+      "id": "07f0",
       "recipeName": "Chicken Curry",
-      "recipeIngredients": "Chicken *onion *garlic *ginger *tomatoes *coconut milk *curry powder *chili *cilantrooo",
-      "recipeDescription": "Sauté onion, garlic, and ginger. *Add chicken and curry powder. *Stir in tomatoes and coconut milk. Simmer until chicken is cooked through. *Garnish with cilantro and serve."
+      "recipeIngredients": "Chicken *onion *garlic *ginger *tomatoes *coconut milk *curry powder *chili *cilantro",
+      "recipeDescription": "Sauté onion, garlic, and ginger. *Add chicken and curry powder. *Stir in tomatoes and coconut milk. *Simmer until chicken is cooked through. *Garnish with cilantro and serve."
     },
     {
-      "id": "1a08",
-      "recipeName": "Milkshake",
-      "recipeIngredients": "nbsjc *jbs *bjaxxxxx",
-      "recipeDescription": "ncbsjcbsdjgyhferuj *jhxjasbcsch"
+      "id": "acd6",
+      "recipeName": "Pancakes",
+      "recipeIngredients": "1 cup flour * 2 eggs * 1 cup milk * 2 tbsp sugar * 1 tsp baking powder",
+      "recipeDescription": "Mix all dry ingredients *Add eggs and milk, whisk until smooth *Heat a non-stick pan and pour batter * Cook until golden on both sides"
     }
   ]
 }

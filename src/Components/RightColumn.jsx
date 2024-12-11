@@ -7,7 +7,7 @@ import EditRecipe from './EditRecipe'
 const RightColumn = ({ selectedRecipe, onDeleteRecipe, onUpdateRecipe }) => {
   if (!selectedRecipe) {
     return (
-      <div className="flex flex-col items-center lg:mt-48 lg:mb-0 mt-40 mb-72">
+      <div className="flex flex-col items-center lg:mt-48 lg:mb-0  mt-40 mb-60">
         <img className="w-80 " src={image4} />
         <h1 className="ml-7 mt-5 ">Select a recipe for details!</h1>
       </div>
@@ -17,7 +17,7 @@ const RightColumn = ({ selectedRecipe, onDeleteRecipe, onUpdateRecipe }) => {
   const [showModal, setShowModal] = useState(false)
 
   return (
-    <div className="flex flex-col lg:mt-4 lg:mb-0 mb-80">
+    <div className="flex flex-col lg:mt-4 lg:mb-0  mb-96">
       <div className="flex flex-row justify-between items-center mb-4">
         <h1 className="text-lg font-semibold ml-4">
           {selectedRecipe.recipeName}
